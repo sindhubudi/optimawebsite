@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AMRTA Kitchen & Coffee Bar</title>
+
+    <meta
+        name="description"
+        content="AMRTA Kitchen & Coffee Bar — tempat menikmati makanan, kopi, pastry, dan suasana yang berkesan."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+     NAVBAR
+========================== -->
+<header class="main-navbar">
+
+    <div class="navbar-container">
+
+        <!-- LOGO -->
+        <a href="index.html" class="navbar-logo">
+            <img
+                src="logoamrta02.jpeg"
+                alt="AMRTA Kitchen & Coffee Bar"
+            >
+        </a>
+
+        <!-- NAVIGATION -->
+        <nav class="navbar-menu" id="navbarMenu">
+
+            <a
+                href="index.html"
+                class="nav-link active"
+            >
+                Home
+            </a>
+
+            <a
+                href="produk.html"
+                class="nav-link"
+            >
+                Menu
+            </a>
+
+            <a
+                href="promo.html"
+                class="nav-link"
+            >
+                Promo
+            </a>
+
+            <a
+                href="event.html"
+                class="nav-link"
+            >
+                Event
+            </a>
+
+            <a
+                href="tentang.html"
+                class="nav-link"
+            >
+                Tentang Kami
+            </a>
+
+            <a
+                href="galeri.html"
+                class="nav-link"
+            >
+                Galeri
+            </a>
+
+            <a
+                href="reservasi.html"
+                class="nav-link"
+            >
+                Reservasi
+            </a>
+
+            <a
+                href="order.html"
+                class="nav-link"
+            >
+                Order Online
+            </a>
+
+            <a
+                href="contact.html"
+                class="nav-link"
+            >
+                Contact Us
+            </a>
+
+        </nav>
+
+        <!-- MOBILE BUTTON -->
+        <button
+            class="navbar-toggle"
+            id="navbarToggle"
+            onclick="toggleNavbar()"
+            aria-label="Buka menu navigasi"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+</header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <main>
+
+        <section class="home-hero">
+
+            <div class="home-hero-overlay"></div>
+
+            <div class="home-hero-content">
+
+                <p class="hero-eyebrow">
+                    AMRTA KITCHEN & COFFEE BAR
+                </p>
+
+                <h1 class="hero-title">
+                    AMRTA
+                </h1>
+
+                <h2 class="hero-subtitle">
+                    Kitchen & Coffee Bar
+                </h2>
+
+                <p class="hero-tagline">
+                    Savor Every Moments.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        href="produk.html"
+                        class="hero-button hero-button-primary"
+                    >
+                        Lihat Menu
+                    </a>
+
+                    <a
+    href="contact.html"
+    class="hero-button hero-button-secondary"
+>
+    Kunjungi Kami
+</a>
+
+                </div>
+
+                <div class="hero-scroll">
+
+                    <span class="scroll-icon">
+                        ↓
+                    </span>
+
+                    <span>
+                        SCROLL UNTUK MENJELAJAH
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EKSPLORASI AMRTA
+        ========================== -->
+        <section class="explore-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        EXPLORE AMRTA
+                    </p>
+
+                    <h2>
+                        Eksplorasi AMRTA
+                    </h2>
+
+                    <p>
+                        Nikmati berbagai pilihan yang kami hadirkan
+                        untuk menemani setiap momen.
+                    </p>
+
+                </div>
+
+
+                <div class="explore-grid">
+
+                    <!-- KITCHEN -->
+                    <article class="explore-card">
+
+                        <div class="explore-card-image">
+
+                            <img
+                                src="kitchenamrta.jpeg"
+                                alt="AMRTA Kitchen"
+                            >
+
+                        </div>
+
+                        <div class="explore-card-content">
+
+                            <span class="explore-number">
+                                01
+                            </span>
+
+                            <h3>
+                                Kitchen
+                            </h3>
+
+                            <p>
+                                Beragam hidangan yang disiapkan
+                                untuk menghadirkan rasa yang berkesan.
+                            </p>
+
+                            <a
+                                href="produk.html"
+                                class="explore-link"
+                            >
+                                Jelajahi Menu
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- COFFEE BAR -->
+                    <article class="explore-card">
+
+                        <div class="explore-card-image">
+
+                            <img
+                                src="gambarkopi03.jpeg"
+                                alt="AMRTA Coffee Bar"
+                            >
+
+                        </div>
+
+                        <div class="explore-card-content">
+
+                            <span class="explore-number">
+                                02
+                            </span>
+
+                            <h3>
+                                Coffee Bar
+                            </h3>
+
+                            <p>
+                                Kopi dan minuman pilihan untuk
+                                menemani waktu santai.
+                            </p>
+
+                            <a
+                                href="produk.html"
+                                class="explore-link"
+                            >
+                                Lihat Pilihan
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PASTRY & Bakery -->
+                    <article class="explore-card">
+
+                        <div class="explore-card-image">
+
+                            <img
+                                src="kueamrta.jpeg"
+                                alt="AMRTA Pastry dan Bakery"
+                            >
+
+                        </div>
+
+                        <div class="explore-card-content">
+
+                            <span class="explore-number">
+                                03
+                            </span>
+
+                            <h3>
+                                Pastry & Bakery
+                            </h3>
+
+                            <p>
+                                Pilihan pastry dan bakery untuk
+                                melengkapi pengalaman di AMRTA.
+                            </p>
+
+                            <a
+                                href="produk.html"
+                                class="explore-link"
+                            >
+                                Temukan Pilihan
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EVERY MOMENT
+        ========================== -->
+        <section class="moment-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        EVERY MOMENT
+                    </p>
+
+                    <h2>
+                        A Taste for Every Moment
+                    </h2>
+
+                    <p>
+                        Setiap waktu memiliki cerita.
+                        Biarkan AMRTA menjadi bagian di dalamnya.
+                    </p>
+
+                </div>
+
+
+                <div class="moment-grid">
+
+                    <!-- MORNING -->
+                    <div class="moment-item">
+
+                        <div class="moment-icon">
+                            ☀
+                        </div>
+
+                        <span class="moment-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Morning
+                        </h3>
+
+                        <p>
+                            Awali hari dengan suasana yang nyaman
+                            dan pilihan minuman serta pastry.
+                        </p>
+
+                    </div>
+
+
+                    <!-- MEAL TIME -->
+                    <div class="moment-item">
+
+                        <div class="moment-icon">
+                            ◇
+                        </div>
+
+                        <span class="moment-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Meal Time
+                        </h3>
+
+                        <p>
+                            Nikmati hidangan untuk menemani
+                            waktu makan bersama orang terdekat.
+                        </p>
+
+                    </div>
+
+
+                    <!-- RELAX -->
+                    <div class="moment-item">
+
+                        <div class="moment-icon">
+                            ✦
+                        </div>
+
+                        <span class="moment-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Relax
+                        </h3>
+
+                        <p>
+                            Luangkan waktu untuk bersantai
+                            dengan kopi dan suasana AMRTA.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SUASANA AMRTA
+        ========================== -->
+        <section class="ambience-section">
+
+            <div class="ambience-image">
+
+                <img
+                    src="interior10.jpg"
+                    alt="Suasana AMRTA Kitchen & Coffee Bar"
+                >
+
+            </div>
+
+            <div class="ambience-overlay"></div>
+
+            <div class="ambience-content">
+
+                <p class="section-eyebrow">
+                    THE AMRTA EXPERIENCE
+                </p>
+
+                <h2>
+                    Suasana AMRTA
+                </h2>
+
+                <p>
+                    Sebuah ruang untuk menikmati makanan,
+                    kopi, dan waktu yang berharga.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MENU CTA
+        ========================== -->
+        <section class="menu-cta-section">
+
+            <div class="container">
+
+                <div class="menu-cta-content">
+
+                    <p class="section-eyebrow">
+                        DISCOVER OUR MENU
+                    </p>
+
+                    <h2>
+                        Temukan Pilihanmu
+                    </h2>
+
+                    <p>
+                        Jelajahi berbagai pilihan makanan,
+                        kopi, minuman, pastry, dan dessert
+                        yang tersedia di AMRTA.
+                    </p>
+
+                    <a
+                        href="produk.html"
+                        class="hero-button hero-button-primary"
+                    >
+                        Lihat Menu
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             KUNJUNGI AMRTA
+        ========================== -->
+        <section class="visit-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        VISIT US
+                    </p>
+
+                    <h2>
+                        Kunjungi AMRTA
+                    </h2>
+
+                    <p>
+                        Kami siap menyambut kamu setiap hari.
+                    </p>
+
+                </div>
+
+
+                <div class="visit-content">
+
+                    <!-- ADDRESS -->
+                    <div class="visit-item">
+
+                        <span class="visit-label">
+                            ADDRESS
+                        </span>
+
+                        <p>
+                            JL. Adi Soemarmo No.401,
+                            Gedongan, Colomadu,
+                            Karanganyar, Jawa Tengah 57173,
+                            Indonesia
+                        </p>
+
+                    </div>
+
+
+                    <!-- OPENING HOURS -->
+                    <div class="visit-item">
+
+                        <span class="visit-label">
+                            OPENING HOURS
+                        </span>
+
+                        <p>
+                            Senin – Minggu
+                            <br>
+                            09.00 – 23.00 WIB
+                        </p>
+
+                    </div>
+
+
+                    <!-- CONTACT -->
+                    <div class="visit-item">
+
+                        <span class="visit-label">
+                            CONTACT
+                        </span>
+
+                        <p>
+                            +62 813-9324-882
+                            <br>
+                            amrta.idn@gmail.com
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="visit-actions">
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=JL.+Adi+Soemarmo+No.401%2C+Gedongan%2C+Colomadu%2C+Karanganyar%2C+Jawa+Tengah+57173%2C+Indonesia"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hero-button hero-button-primary"
+                    >
+                        Google Maps
+                    </a>
+
+                    <a
+                        href="kontak.html"
+                        class="hero-button hero-button-secondary"
+                    >
+                        Hubungi Kami
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+   <footer class="site-footer">
+
+    <div class="footer-main">
+
+        <!-- BRAND -->
+        <div class="footer-brand">
+
+            <img src="logoamrta02.jpeg" alt="AMRTA Kitchen & Coffee Bar">
+
+            <h3>AMRTA Kitchen &amp; Coffee Bar</h3>
+
+            <h4>PT OPTIMA KREASI KULINER</h4>
+
+            <p>
+                AMRTA Kitchen &amp; Coffee Bar menghadirkan
+                pengalaman kuliner dengan cita rasa,
+                kenyamanan, dan suasana yang berkesan.
+            </p>
+
+        </div>
+
+
+        <!-- NAVIGASI -->
+        <div class="footer-navigation">
+
+            <h3>Navigasi</h3>
+
+            <a href="index.html">Home</a>
+            <a href="produk.html">Menu</a>
+            <a href="promo.html">Promo</a>
+            <a href="event.html">Event</a>
+            <a href="tentang.html">Tentang Kami</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="reservasi.html">Reservasi</a>
+            <a href="order.html">Order Online</a>
+            <a href="contact.html">Contact Us</a>
+
+        </div>
+
+
+        <!-- INFORMASI -->
+        <div class="footer-information">
+
+            <h3>Informasi</h3>
+
+            <a href="contact.html">Lokasi</a>
+
+            <a href="contact.html">Jam Operasional</a>
+
+            <a href="contact.html">Hubungi Kami</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 PT OPTIMA KREASI KULINER. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>

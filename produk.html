@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Katalog menu AMRTA Kitchen & Coffee Bar"
+    >
+
+    <meta
+        name="keywords"
+        content="AMRTA, Kitchen, Coffee Bar, Menu, Restaurant, Solo"
+    >
+
+    <title>Menu | AMRTA Kitchen & Coffee Bar</title>
+
+    <!-- CSS UTAMA -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="menu-catalog-page">
+
+  <!-- =========================
+     NAVBAR
+========================== -->
+<header class="main-navbar">
+
+    <div class="navbar-container">
+
+        <!-- LOGO -->
+        <a href="index.html" class="navbar-logo">
+            <img
+                src="logoamrta02.jpeg"
+                alt="AMRTA Kitchen & Coffee Bar"
+            >
+        </a>
+
+
+        <!-- NAVIGATION -->
+        <nav class="navbar-menu" id="navbarMenu">
+
+           <a href="index.html" class="nav-link">
+    Home
+</a>
+
+<a href="produk.html" class="nav-link active">
+    Menu
+</a>
+
+<a href="promo.html" class="nav-link">
+    Promo
+</a>
+
+<a href="event.html" class="nav-link">
+    Event
+</a>
+
+<a href="tentang.html" class="nav-link">
+    Tentang Kami
+</a>
+
+            <a href="galeri.html" class="nav-link">
+                Galeri
+            </a>
+
+            <a href="reservasi.html" class="nav-link">
+                Reservasi
+            </a>
+
+            <a href="order.html" class="nav-link">
+                Order Online
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                Contact Us
+            </a>
+
+        </nav>
+
+
+        <!-- MOBILE BUTTON -->
+        <button
+            class="navbar-toggle"
+            id="navbarToggle"
+            onclick="toggleNavbar()"
+            aria-label="Buka menu navigasi"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+</header>
+
+    <!-- =========================================================
+         HEADER / INTRO MENU
+    ========================================================== -->
+    <section class="catalog-intro">
+
+        <p class="catalog-eyebrow">
+            AMRTA KITCHEN &amp; COFFEE BAR
+        </p>
+
+        <h1>
+            Our Menu
+        </h1>
+
+        <p>
+            Jelajahi katalog menu AMRTA seperti tampilan menu aslinya.
+        </p>
+
+    </section>
+
+
+    <!-- =========================================================
+         NAVIGASI KATALOG
+    ========================================================== -->
+    <section
+        class="catalog-navigation-wrapper"
+        aria-label="Navigasi kategori menu"
+    >
+
+        <div class="catalog-navigation">
+
+            <button
+                type="button"
+                onclick="goToPage(1)"
+            >
+                Cover
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(4)"
+            >
+                Nusantara
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(10)"
+            >
+                Soup
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(11)"
+            >
+                Sandwich
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(12)"
+            >
+                Pasta
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(13)"
+            >
+                Light Bites
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(14)"
+            >
+                Main Course
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(15)"
+            >
+                Pastry &amp; Bakery
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(16)"
+            >
+                Beverage
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(17)"
+            >
+                Milk Base
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(18)"
+            >
+                Espresso Based
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(19)"
+            >
+                Coffee
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(20)"
+            >
+                Tea &amp; Fresh Drink
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(21)"
+            >
+                Juice &amp; Mocktail
+            </button>
+
+            <button
+                type="button"
+                onclick="goToPage(23)"
+            >
+                Closing
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         KATALOG MENU AMRTA
+         
+         SETIAP HALAMAN PDF DITAMPILKAN UTUH.
+         TIDAK ADA PRODUCT CARD INDIVIDUAL.
+    ========================================================== -->
+    <main class="catalog-wrapper">
+
+
+        <!-- =========================
+             PAGE 01 - COVER
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-1"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-01.jpg"
+                alt="AMRTA Menu - Cover"
+                loading="eager"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 02
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-2"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-02.jpg"
+                alt="AMRTA Menu - Savor Every Moment"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 03
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-3"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-03.jpg"
+                alt="AMRTA Kitchen & Coffee Bar"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 04 - NUSANTARA
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-4"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-04.jpg"
+                alt="AMRTA Menu - The Nusantara"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 05 - NUSANTARA
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-5"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-05.jpg"
+                alt="AMRTA Menu - Nusantara"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 06 - NUSANTARA
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-6"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-06.jpg"
+                alt="AMRTA Menu - Nusantara 1"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 07 - NUSANTARA
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-7"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-07.jpg"
+                alt="AMRTA Menu - Nusantara 2"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 08 - NUSANTARA
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-8"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-08.jpg"
+                alt="AMRTA Menu - Nusantara 3"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 09 - NUSANTARA
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-9"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-09.jpg"
+                alt="AMRTA Menu - Nusantara 4"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 10 - SOUP
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-10"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-10.jpg"
+                alt="AMRTA Menu - Soup"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 11 - SANDWICH
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-11"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-11.jpg"
+                alt="AMRTA Menu - Sandwich"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 12 - PASTA
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-12"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-12.jpg"
+                alt="AMRTA Menu - Pasta"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 13 - LIGHT BITES
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-13"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-13.jpg"
+                alt="AMRTA Menu - Light Bites"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 14 - MAIN COURSE
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-14"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-14.jpg"
+                alt="AMRTA Menu - Main Course"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 15 - PASTRY & DESSERT
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-15"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-15.jpg"
+                alt="AMRTA Menu - Pastry & Bakery and Dessert"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 16 - BEVERAGE
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-16"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-16.jpg"
+                alt="AMRTA Menu - Beverage"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 17 - MILK BASE
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-17"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-17.jpg"
+                alt="AMRTA Menu - Milk Base"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 18 - ESPRESSO BASED
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-18"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-18.jpg"
+                alt="AMRTA Menu - Espresso Based"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 19 - COFFEE
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-19"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-19.jpg"
+                alt="AMRTA Menu - Coffee"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 20 - TEA & FRESH DRINK
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-20"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-20.jpg"
+                alt="AMRTA Menu - Tea Series & Fresh Drink"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 21 - JUICE & MOCKTAIL
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-21"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-21.jpg"
+                alt="AMRTA Menu - Juice & Mocktail"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 22
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-22"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-22.jpg"
+                alt="AMRTA Menu - AMRTA Kitchen & Coffee Bar"
+                loading="lazy"
+            >
+        </section>
+
+
+        <!-- =========================
+             PAGE 23 - CLOSING
+        ========================== -->
+        <section
+            class="catalog-page"
+            id="page-23"
+        >
+            <img
+                src="AMRTA_MENU_PAGES_LENGKAP/menu-pages/page-23.jpg"
+                alt="AMRTA Menu - Savor Every Moment"
+                loading="lazy"
+            >
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================================
+         TOMBOL KEMBALI KE ATAS
+    ========================================================== -->
+    <button
+        class="catalog-top"
+        id="catalogTop"
+        type="button"
+        onclick="scrollToTop()"
+        aria-label="Kembali ke atas"
+    >
+        ↑
+    </button>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+    <footer class="catalog-footer">
+
+        <p>
+            © 2026 AMRTA Kitchen &amp; Coffee Bar.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+    <script>
+
+        /* =====================================================
+           NAVBAR MOBILE
+        ====================================================== */
+
+        function toggleNavbar() {
+
+            const menu =
+                document.getElementById("navbarMenu");
+
+            const button =
+                document.getElementById("navbarToggle");
+
+            menu.classList.toggle("show");
+
+            const isOpen =
+                menu.classList.contains("show");
+
+            button.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+        }
+
+
+        /* =====================================================
+           SCROLL KE HALAMAN KATALOG
+        ====================================================== */
+
+        function goToPage(pageNumber) {
+
+            const target =
+                document.getElementById(
+                    "page-" + pageNumber
+                );
+
+            if (!target) {
+                return;
+            }
+
+            const navbar =
+                document.querySelector(
+                    ".main-navbar"
+                );
+
+            const navigation =
+                document.querySelector(
+                    ".catalog-navigation-wrapper"
+                );
+
+            const navbarHeight =
+                navbar
+                    ? navbar.offsetHeight
+                    : 0;
+
+            const navigationHeight =
+                navigation
+                    ? navigation.offsetHeight
+                    : 0;
+
+            const offset =
+                navbarHeight +
+                navigationHeight +
+                25;
+
+            const targetTop =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                offset;
+
+            window.scrollTo({
+
+                top: targetTop,
+
+                behavior: "smooth"
+
+            });
+        }
+
+
+        /* =====================================================
+           KEMBALI KE ATAS
+        ====================================================== */
+
+        function scrollToTop() {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+        }
+
+
+        /* =====================================================
+           TOMBOL BACK TO TOP
+        ====================================================== */
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                const topButton =
+                    document.getElementById(
+                        "catalogTop"
+                    );
+
+                if (window.scrollY > 500) {
+
+                    topButton.classList.add(
+                        "show"
+                    );
+
+                } else {
+
+                    topButton.classList.remove(
+                        "show"
+                    );
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           TUTUP NAVBAR MOBILE SETELAH LINK DIPILIH
+        ====================================================== */
+
+        document
+            .querySelectorAll(
+                ".navbar-menu .nav-link"
+            )
+            .forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        const menu =
+                            document.getElementById(
+                                "navbarMenu"
+                            );
+
+                        const button =
+                            document.getElementById(
+                                "navbarToggle"
+                            );
+
+                        menu.classList.remove(
+                            "show"
+                        );
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* =====================================================
+           TUTUP NAVBAR JIKA KLIK DI LUAR MENU
+        ====================================================== */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const menu =
+                    document.getElementById(
+                        "navbarMenu"
+                    );
+
+                const button =
+                    document.getElementById(
+                        "navbarToggle"
+                    );
+
+                if (!menu || !button) {
+                    return;
+                }
+
+                const clickedInsideMenu =
+                    menu.contains(event.target);
+
+                const clickedButton =
+                    button.contains(event.target);
+
+                if (
+                    !clickedInsideMenu &&
+                    !clickedButton &&
+                    menu.classList.contains("show")
+                ) {
+
+                    menu.classList.remove(
+                        "show"
+                    );
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

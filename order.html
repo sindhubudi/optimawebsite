@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Online | AMRTA Kitchen & Coffee Bar</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+<style>
+.cart-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.cart-grand-total {
+    margin-top: 6px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.cart-grand-total strong {
+    color: #d4af37;
+}
+
+/* Penyesuaian Foto pada Kartu Menu Order */
+.order-menu-card-img {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.order-menu-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.order-menu-card:hover .order-menu-card-img img {
+    transform: scale(1.06);
+}
+</style>
+
+</head>
+
+<body class="order-page">
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="main-navbar">
+
+    <div class="navbar-container">
+
+        <a href="index.html" class="navbar-logo">
+            <img src="logoamrta02.jpeg" alt="Logo AMRTA">
+        </a>
+
+        <nav class="navbar-menu">
+
+            <a href="index.html" class="nav-link">
+                Home
+            </a>
+
+            <a href="produk.html" class="nav-link">
+                Menu
+            </a>
+
+            <a href="promo.html" class="nav-link">
+                Promo
+            </a>
+
+            <a href="event.html" class="nav-link">
+                Event
+            </a>
+
+            <a href="tentang.html" class="nav-link">
+                Tentang Kami
+            </a>
+
+            <a href="galeri.html" class="nav-link">
+                Galeri
+            </a>
+
+            <a href="reservasi.html" class="nav-link">
+                Reservasi
+            </a>
+
+            <a href="order.html" class="nav-link active">
+                Order Online
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                Contact Us
+            </a>
+
+        </nav>
+
+        <button
+            class="navbar-toggle"
+            type="button"
+            onclick="toggleOrderMenu()"
+            aria-label="Buka menu"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="order-hero">
+
+    <div class="order-hero-overlay"></div>
+
+    <div class="order-hero-content">
+
+        <p class="order-eyebrow">
+            AMRTA KITCHEN & COFFEE BAR
+        </p>
+
+        <h1>
+            Order Online
+        </h1>
+
+        <p>
+            Pilih hidangan favoritmu dan lakukan pemesanan
+            dengan mudah melalui WhatsApp AMRTA.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ORDER CONTENT
+===================================================== -->
+
+<main class="order-main">
+
+    <div class="order-container">
+
+
+        <!-- =================================================
+             HEADER MENU
+        ================================================== -->
+
+        <div class="order-heading">
+
+            <p class="order-section-label">
+                OUR MENU
+            </p>
+
+            <h2>
+                Pilih Menu Favoritmu
+            </h2>
+
+            <p>
+                Tambahkan menu yang kamu inginkan ke keranjang,
+                lalu lanjutkan pesanan melalui WhatsApp.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             CATEGORY FILTER
+        ================================================== -->
+
+        <div class="order-category-filter">
+
+            <button
+                class="order-filter active"
+                onclick="filterMenu('all', this)"
+            >
+                Semua
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Nusantara', this)"
+            >
+                Nusantara
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Soup', this)"
+            >
+                Soup
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Sandwich', this)"
+            >
+                Sandwich
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Pasta', this)"
+            >
+                Pasta
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Light Bites', this)"
+            >
+                Light Bites
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Main Course', this)"
+            >
+                Main Course
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Pastry & Bakery', this)"
+            >
+                Pastry & Bakery
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Dessert', this)"
+            >
+                Dessert
+            </button>
+
+            <button
+                class="order-filter"
+                onclick="filterMenu('Beverage', this)"
+            >
+                Beverage
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             MENU LIST
+        ================================================== -->
+
+        <div
+            id="orderMenuGrid"
+            class="order-menu-grid"
+        ></div>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     FLOATING CART
+===================================================== -->
+
+<button
+    class="order-cart-button"
+    onclick="openCart()"
+    aria-label="Buka keranjang"
+>
+
+    <span class="cart-icon">
+        🛒
+    </span>
+
+    <span class="cart-text">
+        Keranjang
+    </span>
+
+    <span
+        id="cartCount"
+        class="cart-count"
+    >
+        0
+    </span>
+
+</button>
+
+
+<!-- =====================================================
+     CART OVERLAY
+===================================================== -->
+
+<div
+    id="cartOverlay"
+    class="cart-overlay"
+    onclick="closeCart()"
+></div>
+
+
+<!-- =====================================================
+     CART PANEL
+===================================================== -->
+
+<aside
+    id="cartPanel"
+    class="cart-panel"
+>
+
+    <div class="cart-header">
+
+        <div>
+
+            <p>
+                YOUR ORDER
+            </p>
+
+            <h2>
+                Keranjang
+            </h2>
+
+        </div>
+
+        <button
+            class="cart-close"
+            onclick="closeCart()"
+            aria-label="Tutup keranjang"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        id="cartItems"
+        class="cart-items"
+    >
+
+        <div class="cart-empty">
+
+            <span>
+                🛒
+            </span>
+
+            <h3>
+                Keranjang masih kosong
+            </h3>
+
+            <p>
+                Tambahkan menu terlebih dahulu.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-summary">
+
+            <div class="cart-total-row">
+                <span>Subtotal</span>
+                <strong id="cartSubtotal">Rp0</strong>
+            </div>
+
+            <div class="cart-total-row">
+                <span>Pajak (11%)</span>
+                <strong id="cartTax">Rp0</strong>
+            </div>
+
+            <div class="cart-total-row cart-grand-total">
+                <span>Total</span>
+                <strong id="cartTotal">Rp0</strong>
+            </div>
+
+        </div>
+
+        <button
+            class="checkout-button"
+            onclick="checkoutWhatsApp()"
+        >
+            Checkout via WhatsApp
+            <span>→</span>
+        </button>
+
+        <p class="checkout-note">
+            Pesanan akan dikirim ke WhatsApp AMRTA
+        </p>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="order-cta">
+
+    <div class="order-cta-overlay"></div>
+
+    <div class="order-cta-content">
+
+        <p class="order-eyebrow">
+            NEED HELP?
+        </p>
+
+        <h2>
+            Ingin Reservasi?
+        </h2>
+
+        <p>
+            Jika kamu ingin melakukan reservasi meja,
+            gunakan halaman reservasi kami.
+        </p>
+
+        <a
+            href="reservasi.html"
+            class="order-cta-button"
+        >
+            Reservasi Sekarang
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container footer-container">
+
+        <div class="footer-brand">
+
+            <a href="index.html">
+                <img
+                    src="logoamrta02.jpeg"
+                    alt="AMRTA Kitchen & Coffee Bar"
+                >
+            </a>
+
+            <p class="footer-brand-name">
+                AMRTA Kitchen & Coffee Bar
+            </p>
+
+            <span class="footer-company">
+                PT OPTIMA KREASI KULINER
+            </span>
+
+            <p class="footer-description">
+                AMRTA Kitchen & Coffee Bar menghadirkan pengalaman
+                kuliner dengan cita rasa, kenyamanan, dan suasana
+                yang berkesan.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Navigasi
+            </h3>
+
+            <a href="index.html">Home</a>
+            <a href="produk.html">Menu</a>
+            <a href="promo.html">Promo</a>
+            <a href="event.html">Event</a>
+            <a href="tentang.html">Tentang Kami</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="reservasi.html">Reservasi</a>
+            <a href="order.html">Order Online</a>
+            <a href="contact.html">Contact Us</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Informasi
+            </h3>
+
+            <a href="contact.html">Lokasi</a>
+            <a href="contact.html">Jam Operasional</a>
+            <a href="contact.html">Hubungi Kami</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 PT OPTIMA KREASI KULINER. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT ORDER ONLINE
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   DATA MENU AMRTA (DENGAN SLOT GAMBAR)
+===================================================== */
+
+const menuData = [
+
+    /* =========================
+       NUSANTARA
+    ========================== */
+
+    { name: "Iga Bakar Rembiga", price: 58000, category: "Nusantara", image: "menu order amrta/Iga Bakar Rembiga.jpeg" },
+    { name: "Ikan Dabu Dabu", price: 46000, category: "Nusantara", image: "menu order amrta/ikan dabu-dabu.jpeg" },
+    { name: "Bebek Gongso AMRTA", price: 46000, category: "Nusantara", image: "menu order amrta/bebek gongso.jpeg" },
+    { name: "Ayam Taliwang", price: 39000, category: "Nusantara", image: "menu order amrta/ayam taliwang.jpeg" },
+    { name: "Se'i Sapi", price: 54000, category: "Nusantara", image: "menu order amrta/sei sapi.jpeg" },
+    { name: "Ayam Betutu", price: 39000, category: "Nusantara", image: "menu order amrta/ayam betutu.jpeg" },
+    { name: "Ayam Gongso AMRTA", price: 41000, category: "Nusantara", image: "menu order amrta/ayam gongso amrta.jpeg" },
+    { name: "Bebek Bumbu Hitam", price: 44000, category: "Nusantara", image: "menu order amrta/bebek bumbu hitam.jpeg" },
+    { name: "Kwetiau Goreng Seafood", price: 54000, category: "Nusantara", image: "menu order amrta/kwetiau goreng seafood.jpeg" },
+    { name: "Ayam Goreng", price: 37000, category: "Nusantara", image: "menu order amrta/ayam goreng.jpeg" },
+    { name: "Ayam Bumbu Hitam", price: 38000, category: "Nusantara", image: "menu order amrta/ayam bumbu hitam.jpeg" },
+    { name: "Nasi Goreng Seafood", price: 54000, category: "Nusantara", image: "menu order amrta/nasi goreng seafood.jpeg" },
+    { name: "Ayam Lodho", price: 39000, category: "Nusantara", image: "menu order amrta/" },
+    { name: "Mie Goreng Seafood", price: 56000, category: "Nusantara", image: "menu order amrta/" },
+    { name: "Ati Ampela Gongso", price: 34000, category: "Nusantara", image: "menu order amrta/" },
+    { name: "Nasi Goreng Ayam", price: 32000, category: "Nusantara", image: "menu order amrta/" },
+    { name: "Mie Goreng Ayam", price: 33000, category: "Nusantara", image: "menu order amrta/" },
+
+
+    /* =========================
+       SOUP
+    ========================== */
+
+    { name: "Soto Tangkar Betawi", price: 58000, category: "Soup", image: "menu order amrta/soto tangkar betawi.jpeg" },
+    { name: "Sop Iga", price: 58000, category: "Soup", image: "menu order amrta/sop iga.jpeg" },
+    { name: "Rawon Surabaya", price: 58000, category: "Soup", image: "menu order amrta/rawon surabaya.jpeg" },
+
+
+    /* =========================
+       SANDWICH
+    ========================== */
+
+    { name: "Mushroom Beef Sandwich", price: 52000, category: "Sandwich", image: "menu order amrta/mushroof beef sandwich.jpeg" },
+    { name: "Mom's Burger", price: 54000, category: "Sandwich", image: "menu order amrta/moms bergeer.jpeg" },
+    { name: "Tuna Sandwich", price: 48000, category: "Sandwich", image: "menu order amrta/tuna sandwich.jpeg" },
+
+
+    /* =========================
+       PASTA
+    ========================== */
+
+    { name: "Creamy Beef Mushroom Pasta", price: 56000, category: "Pasta", image: "menu order amrta/crramy beef mushroom pasta.jpeg" },
+    { name: "Spaghetti Bolognaise", price: 46000, category: "Pasta", image: "menu order amrta/spaghetti bolognaise.jpeg" },
+
+
+    /* =========================
+       LIGHT BITES
+    ========================== */
+
+    { name: "French Fries", price: 24000, category: "Light Bites", image: "menu order amrta/french fries.jpeg" },
+    { name: "Chicken Wing Salted Egg", price: 37000, category: "Light Bites", image: "menu order amrta/chiken wing salted egg.jpeg" },
+    { name: "Chicken Wing Hot Lava", price: 39000, category: "Light Bites", image: "menu order amrta/chicken wing hot lava.jpeg" },
+    { name: "AMRTA Platter", price: 48000, category: "Light Bites", image: "menu order amrta/amrta later.jpeg" },
+
+
+    /* =========================
+       MAIN COURSE
+    ========================== */
+
+    { name: "Fish and Chips", price: 54000, category: "Main Course", image: "menu order amrta/fish and chips.jpeg" },
+    { name: "Beef Steak", price: 118000, category: "Main Course", image: "menu order amrta/beeft steak.jpeg" },
+    { name: "Chicken Cordon Bleu", price: 56000, category: "Main Course", image: "menu order amrta/chicken cordon bleu.jpeg" },
+    { name: "Chicken Steak", price: 55000, category: "Main Course", image: "menu order amrta/" },
+    { name: "Mashed Potato", price: 15000, category: "Main Course", image: "menu order amrta/" },
+    { name: "French Fries", price: 15000, category: "Main Course", image: "menu order amrta/" },
+    { name: "Steam Rice", price: 10000, category: "Main Course", image: "menu order amrta/" },
+
+
+
+    /* =========================
+   PASTRY & BAKERY (SUDAH DIPERBAIKI)
+========================== */
+{ name: "Butter Croissant", price: 24000, category: "Pastry & Bakery", image: "menu order amrta/butter croisant.jpeg" },
+{ name: "Danish Cinnamon", price: 26000, category: "Pastry & Bakery", image: "menu order amrta/danish cinamon.jpeg" },
+{ name: "Hazelnut Croissant", price: 29000, category: "Pastry & Bakery", image: "menu order amrta/Hazelnut Croissant.jpeg" },
+{ name: "Pain Au Choco", price: 27000, category: "Pastry & Bakery", image: "menu order amrta/pain au choco.jpeg" },
+{ name: "Smoke Beef & Cheese", price: 34000, category: "Pastry & Bakery", image: "menu order amrta/smoke beef and cheese.jpeg" },
+{ name: "Palmier", price: 32000, category: "Pastry & Bakery", image: "menu order amrta/" },
+{ name: "Pain Au Suisse", price: 34000, category: "Pastry & Bakery", image: "menu order amrta/" },
+
+    /* =========================
+       DESSERT
+    ========================== */
+
+    { name: "Burnt Cheese Cake", price: 24000, category: "Dessert", image: "menu order amrta/Burnt Cheese Cake.jpeg" },
+    { name: "Triple Choco Cake", price: 40000, category: "Dessert", image: "menu order amrta/Triple Choco Cake.jpeg" },
+    { name: "Ubee Cheese Cake", price: 34000, category: "Dessert", image: "menu order amrta/Ubee Cheese Cake.jpeg" },
+    { name: "French Toast Chocolate", price: 36000, category: "Dessert", image: "menu order amrta/French Toast Chocolate.jpeg" },
+    { name: "French Toast Strawberry", price: 36000, category: "Dessert", image: "menu order amrta/French Toast Strawberry.jpeg" },
+
+
+    /* =========================
+       BEVERAGE - MILK BASE
+    ========================== */
+
+    { name: "Coconut Pandan Milk", price: 22000, category: "Beverage", image: "menu order amrta/coconut pandan milk.jpeg" },
+    { name: "Red Velvet", price: 24000, category: "Beverage", image: "menu order amrta/red velvet.jpeg"},
+    { name: "Chocolate", price: 22000, category: "Beverage", image: "menu order amrta/Chocolate.jpeg" },
+    { name: "Signature Matcha", price: 36000, category: "Beverage", image: "menu order amrta/signature matcha.jpeg" },
+    { name: "Strawberry Crumble", price: 22000, category: "Beverage", image: "menu order amrta/strawbery crumble.jpeg" },
+    { name: "Strawberry Matcha", price: 30000, category: "Beverage", image: "menu order amrta/strawbery matcha.jpeg" },
+
+
+    /* =========================
+       BEVERAGE - ESPRESSO
+    ========================== */
+
+    { name: "Cappuccino ICE/HOT", price: 28000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Cafe Latte ICE/HOT", price: 28000, category: "Beverage", image: "gambarcoffe.jpeg" },
+    { name: "Piccolo HOT", price: 28000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Single Espresso HOT", price: 18000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Double Espresso HOT", price: 22000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Magic Latte HOT", price: 28000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Affogato HOT", price: 28000, category: "Beverage", image: "menu order amrta/" },
+
+
+    /* =========================
+       BEVERAGE - COFFEE
+    ========================== */
+
+    { name: "Butterscotch Latte", price: 34000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Kopi Susu AMRTA", price: 28000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Kopi Susu Lumora", price: 38000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Kopi Susu Imperio", price: 34000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Klepon Latte", price: 36000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Mochaccino", price: 32000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Americano", price: 28000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Mont Blanc", price: 30000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Dirty Latte", price: 36000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Palm Sugar Latte", price: 34000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Hazelnut Latte", price: 34000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Vanilla Latte", price: 34000, category: "Beverage", image: "menu order amrta/g" },
+    { name: "Caramel Latte", price: 34000, category: "Beverage", image: "menu order amrta/" },
+
+
+    /* =========================
+       BEVERAGE - TEA
+    ========================== */
+
+    { name: "Black Tea", price: 10000, category: "Beverage", image: "menu order amrta/balck tea.jpeg" },
+    { name: "Lemon Tea", price: 15000, category: "Beverage", image: "menu order amrta/lemon tea.jpeg" },
+    { name: "Lychee Tea", price: 15000, category: "Beverage", image: "menu order amrta/lychee tea.jpeg" },
+    { name: "Thai Tea Original", price: 15000, category: "Beverage", image: "menu order amrta/thai tea original.jpeg" },
+    { name: "Jelly Thai Tea", price: 18000, category: "Beverage", image: "menu order amrta/jelly thai tea.jpeg" },
+
+    /* =========================
+       BEVERAGE - FRESH DRINK
+    ========================== */
+
+    { name: "Lychee Berry", price: 27500, category: "Beverage", image: "menu order amrta/virgin mojito.jpeg" },
+    { name: "Strawberry Mojito", price: 22000, category: "Beverage", image: "menu order amrta/strawbery mojit0.jpeg" },
+    { name: "Lychee Mojito", price: 27500, category: "Beverage", image: "menu order amrta/lechy mojito.jpeg" },
+    { name: "Ocean Blue", price: 22000, category: "Beverage", image: "menu order amrta/ocean blue.jpeg" },
+    { name: "Mineral Water", price: 12000, category: "Beverage", image: "menu order amrta/" },
+
+
+    /* =========================
+       BEVERAGE - JUICE
+    ========================== */
+
+    { name: "Orange Juice", price: 26000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Strawberry Juice", price: 22000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Avocado Juice", price: 26000, category: "Beverage", image: "menu order amrta/" },
+    { name: "Watermelon Juice", price: 22000, category: "Beverage", image: "menu order amrta/" },
+
+
+    /* =========================
+       BEVERAGE - MOCKTAIL
+    ========================== */
+
+    { name: "Coconut Kiss Mocktail", price: 28000, category: "Beverage", image: "menu order amrta/coconut kis mocktail.jpeg" },
+    { name: "Aswatama", price: 30000, category: "Beverage", image: "menu order amrta/aswatama.jpeg" },
+    { name: "Santanu", price: 35000, category: "Beverage", image: "menu order amrta/santanu.jpeg" }
+
+];
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+let cart = [];
+
+
+/* =====================================================
+   FORMAT RUPIAH
+===================================================== */
+
+function formatRupiah(number) {
+
+    return new Intl.NumberFormat(
+        "id-ID",
+        {
+            style: "currency",
+            currency: "IDR",
+            maximumFractionDigits: 0
+        }
+    ).format(number);
+
+}
+
+
+/* =====================================================
+   DISPLAY MENU
+===================================================== */
+
+function displayMenu(category = "all") {
+
+    const menuGrid =
+        document.getElementById("orderMenuGrid");
+
+    const filteredMenu =
+        category === "all"
+            ? menuData
+            : menuData.filter(
+                item => item.category === category
+            );
+
+
+    menuGrid.innerHTML = "";
+
+
+    filteredMenu.forEach((item, index) => {
+
+        const card =
+            document.createElement("article");
+
+        card.className = "order-menu-card";
+
+        // Tampilkan gambar jika ada, jika tidak ada pakai gambar placeholder/default
+        const imageSrc = item.image ? item.image : "logoamrta02.jpeg";
+
+        card.innerHTML = `
+
+            <div class="order-menu-card-img">
+                <img src="${imageSrc}" alt="${item.name}" loading="lazy">
+            </div>
+
+            <div class="order-menu-card-top">
+
+                <span class="order-menu-category">
+                    ${item.category}
+                </span>
+
+                <span class="order-menu-number">
+                    ${String(index + 1).padStart(2, "0")}
+                </span>
+
+            </div>
+
+
+            <div class="order-menu-card-content">
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+                <strong>
+                    ${formatRupiah(item.price)}
+                </strong>
+
+            </div>
+
+
+            <button
+                class="add-menu-button"
+                onclick="addToCart('${item.name.replace(/'/g, "\\'")}', ${item.price})"
+            >
+                + Tambah
+            </button>
+
+        `;
+
+
+        menuGrid.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   FILTER MENU
+===================================================== */
+
+function filterMenu(category, button) {
+
+    document
+        .querySelectorAll(".order-filter")
+        .forEach(
+            btn => btn.classList.remove("active")
+        );
+
+
+    button.classList.add("active");
+
+
+    displayMenu(category);
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart(name, price) {
+
+    const existing =
+        cart.find(item => item.name === name);
+
+
+    if (existing) {
+
+        existing.quantity++;
+
+    } else {
+
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+
+    }
+
+
+    updateCart();
+
+
+    /* Buka keranjang setelah tambah */
+    openCart();
+
+}
+
+
+/* =====================================================
+   UPDATE CART
+===================================================== */
+
+function updateCart() {
+
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartSubtotal = document.getElementById("cartSubtotal");
+    const cartTax = document.getElementById("cartTax");
+    const cartTotal = document.getElementById("cartTotal");
+
+    const totalQuantity = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
+
+    const subtotal = cart.reduce(
+        (sum, item) => sum + (item.price * item.quantity),
+        0
+    );
+
+    const tax = Math.round(subtotal * 0.11);
+    const total = subtotal + tax;
+
+    cartCount.textContent = totalQuantity;
+    cartSubtotal.textContent = formatRupiah(subtotal);
+    cartTax.textContent = formatRupiah(tax);
+    cartTotal.textContent = formatRupiah(total);
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <div class="cart-empty">
+                <span>🛒</span>
+                <h3>Keranjang masih kosong</h3>
+                <p>Tambahkan menu terlebih dahulu.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+
+        const itemElement = document.createElement("div");
+
+        itemElement.className = "cart-item";
+
+        itemElement.innerHTML = `
+
+            <div class="cart-item-info">
+                <h4>${item.name}</h4>
+                <p>${formatRupiah(item.price)}</p>
+            </div>
+
+            <div class="cart-item-actions">
+
+                <button onclick="changeQuantity(${index}, -1)">
+                    −
+                </button>
+
+                <span>${item.quantity}</span>
+
+                <button onclick="changeQuantity(${index}, 1)">
+                    +
+                </button>
+
+            </div>
+
+            <strong class="cart-item-subtotal">
+                ${formatRupiah(item.price * item.quantity)}
+            </strong>
+
+            <button
+                class="cart-remove"
+                onclick="removeFromCart(${index})"
+                aria-label="Hapus item"
+            >
+                ×
+            </button>
+
+        `;
+
+        cartItems.appendChild(itemElement);
+
+    });
+
+}
+
+function changeQuantity(index, amount) {
+
+    cart[index].quantity += amount;
+
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+
+    updateCart();
+
+}
+
+
+/* =====================================================
+   REMOVE
+===================================================== */
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+
+/* =====================================================
+   OPEN CART
+===================================================== */
+
+function openCart() {
+
+    document
+        .getElementById("cartPanel")
+        .classList.add("show");
+
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("show");
+
+
+    document.body.classList.add(
+        "cart-open"
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE CART
+===================================================== */
+
+function closeCart() {
+
+    document
+        .getElementById("cartPanel")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("show");
+
+
+    document.body.classList.remove(
+        "cart-open"
+    );
+
+}
+
+
+/* =====================================================
+   CHECKOUT WHATSAPP
+===================================================== */
+
+function checkoutWhatsApp() {
+
+    if (cart.length === 0) {
+
+        alert(
+            "Keranjang masih kosong. Silakan pilih menu terlebih dahulu."
+        );
+
+        return;
+    }
+
+    let message =
+        "Halo AMRTA Kitchen & Coffee Bar,\n\n";
+
+    message +=
+        "Saya ingin melakukan pemesanan:\n\n";
+
+    let subtotal = 0;
+
+    cart.forEach((item, index) => {
+
+        const itemSubtotal =
+            item.price * item.quantity;
+
+        subtotal += itemSubtotal;
+
+        message +=
+            `${index + 1}. ${item.name}\n`;
+
+        message +=
+            `   ${item.quantity} x ${formatRupiah(item.price)}\n`;
+
+        message +=
+            `   Subtotal: ${formatRupiah(itemSubtotal)}\n\n`;
+
+    });
+
+    const tax =
+        Math.round(subtotal * 0.11);
+
+    const total =
+        subtotal + tax;
+
+    message +=
+        `Subtotal: ${formatRupiah(subtotal)}\n`;
+
+    message +=
+        `Pajak (11%): ${formatRupiah(tax)}\n`;
+
+    message +=
+        `Total Pesanan: ${formatRupiah(total)}\n\n`;
+
+    message +=
+        "Mohon dikonfirmasi ketersediaan dan total pesanan saya.\n\n";
+
+    message +=
+        "Terima kasih.";
+
+    const whatsappNumber =
+        "628139324882";
+
+    const encodedMessage =
+        encodeURIComponent(message);
+
+    const whatsappURL =
+        `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+}
+
+function toggleOrderMenu() {
+
+    const menu =
+        document.querySelector(
+            ".order-page .navbar-menu"
+        );
+
+
+    if (menu) {
+
+        menu.classList.toggle("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+displayMenu();
+
+
+/* Tutup navbar mobile setelah klik */
+
+document
+    .querySelectorAll(
+        ".order-page .navbar-menu .nav-link"
+    )
+    .forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function() {
+
+                const navMenu =
+                    document.querySelector(
+                        ".order-page .navbar-menu"
+                    );
+
+
+                if (navMenu) {
+
+                    navMenu.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+</script>
+
+</body>
+</html>
