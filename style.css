@@ -71,134 +71,115 @@ button {
 
 
 /* =========================================================
-   NAVBAR RESPONSIF & MOBILE MENU (FIXED)
-========================================================= */
-.main-navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #050505;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-}
+   2. NAVBAR
+   ========================================================= */
 
-.navbar-container {
-    width: min(1180px, 92%);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 0;
+.navbar {
     position: relative;
-}
-
-.navbar-logo img {
-    height: 40px;
-    display: block;
-}
-
-.navbar-menu {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-}
-
-.nav-link {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.nav-link.active, 
-.nav-link:hover {
-    color: #d4af37;
-}
-
-/* Tombol Hamburger */
-.navbar-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-}
-
-.navbar-toggle span {
+    z-index: 1000;
     width: 100%;
-    height: 2px;
-    background: #d4af37;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform-origin: left center;
+    height: var(--nav-height);
+    background: rgba(5, 5, 5, 0.97);
+    border-bottom: 1px solid rgba(212, 173, 40, 0.22);
 }
 
-/* Mode Silang (X) saat aktif */
-.navbar-toggle.open span:nth-child(1) {
-    transform: rotate(45deg);
+.nav-container {
+    width: min(92%, var(--container));
+    height: 100%;
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
-.navbar-toggle.open span:nth-child(2) {
-    opacity: 0;
+
+.brand {
+    width: 150px;
+    height: 100%;
+    flex: 0 0 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
-.navbar-toggle.open span:nth-child(3) {
-    transform: rotate(-45deg);
+
+.brand img {
+    width: 135px;
+    height: 88px;
+    object-fit: contain;
+    object-position: center;
 }
 
-/* =========================================================
-   TAMPILAN KHUSUS MOBILE (HANDPHONE)
-========================================================= */
-@media (max-width: 850px) {
-    .navbar-toggle {
-        display: flex;
-    }
-
-    .navbar-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #0a0a0a;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
-        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-        
-        /* Layout Menu */
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 10px 0;
-
-        /* Efek Animasi Buka/Tutup Smooth */
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.3s ease-in-out;
-        pointer-events: none;
-    }
-
-    .navbar-menu.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .nav-link {
-        padding: 14px 24px;
-        font-size: 13px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        display: block;
-    }
-
-    .nav-link:last-child {
-        border-bottom: none;
-    }
+.nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 44px;
 }
+
+.nav-menu a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    height: 100px;
+    color: var(--white);
+
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 23px;
+
+    width: 0;
+    height: 3px;
+    margin-inline: auto;
+
+    background: var(--gold);
+    border-radius: 10px;
+
+    transition: width 0.25s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--gold-light);
+    transform: translateY(-1px);
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 34px;
+}
+
+.nav-menu a.active {
+    color: var(--gold-light);
+}
+
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+
+    background: transparent;
+    color: var(--gold-light);
+    cursor: pointer;
+}
+
 
 /* =========================================================
    3. HOME - HERO
