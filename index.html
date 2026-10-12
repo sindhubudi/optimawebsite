@@ -886,186 +886,35 @@
     <!-- =========================
         JAVASCRIPT PERBAIKAN
     ========================== -->
-    <script>
-    // 1. TOGGLE NAVBAR MOBILE
-    function toggleNavbar() {
-        const menu = document.getElementById("navbarMenu");
-        menu.classList.toggle("active");
-    }
+    // TOGGLE & CONTROLLER NAVBAR MOBILE
+function toggleNavbar() {
+    const menu = document.getElementById("navbarMenu");
+    const toggleBtn = document.getElementById("navbarToggle");
 
-    // 2. CAROUSEL TASTE CINEMATIC
-    document.addEventListener("DOMContentLoaded", () => {
-        const slides = [
-            {
-                image: "fullmakanan.jpeg",
-                label: "FOOD & FLAVOR",
-                title: "Flavors Worth Sharing",
-                text: "Sajian AMRTA hadir dengan cita rasa yang dibuat untuk dinikmati bersama."
-            },
-            {
-                image: "kitchenamrta.jpeg",
-                label: "FROM OUR KITCHEN",
-                title: "Crafted with Passion",
-                text: "Setiap hidangan dipersiapkan dengan perhatian pada rasa, detail, dan kualitas."
-            },
-            {
-                image: "gambarkopi03.jpeg",
-                label: "COFFEE BAR",
-                title: "Brewed for Every Moment",
-                text: "Temukan pilihan kopi dan minuman yang pas untuk memulai, menemani, atau menutup hari."
-            },
-            {
-                image: "lapis3.jpeg",
-                label: "PASTRY & BAKERY",
-                title: "Freshly Made, Beautifully Served",
-                text: "Pastry dan bakery AMRTA melengkapi momen santai dengan rasa yang hangat dan menyenangkan."
-            },
-            {
-                image: "gambar suasana.jpeg",
-                label: "THE AMRTA EXPERIENCE",
-                title: "Moments Made at AMRTA",
-                text: "Bukan hanya tentang rasa, tetapi tentang momen yang ingin Anda nikmati kembali."
-            }
-        ];
+    menu.classList.toggle("active");
+    toggleBtn.classList.toggle("open");
+}
 
-        const image = document.getElementById("tasteCinematicImage");
-        const backdrop = document.querySelector(".taste-cinematic-backdrop");
-        const current = document.getElementById("tasteCinematicCurrent");
-        const label = document.getElementById("tasteCinematicLabel");
-        const title = document.getElementById("tasteCinematicTitle");
-        const text = document.getElementById("tasteCinematicText");
-        const progress = document.getElementById("tasteCinematicProgress");
-        const dotsWrap = document.getElementById("tasteCinematicDots");
-        const prev = document.getElementById("tasteCinematicPrev");
-        const next = document.getElementById("tasteCinematicNext");
+// Otomatis tutup menu jika link diklik atau klik di luar menu
+document.addEventListener("DOMContentLoaded", () => {
+    const menu = document.getElementById("navbarMenu");
+    const toggleBtn = document.getElementById("navbarToggle");
 
-        if (!image || !backdrop || !dotsWrap) return;
-
-        let index = 0;
-        let timer;
-
-        slides.forEach((_, i) => {
-            const dot = document.createElement("button");
-            dot.type = "button";
-            dot.setAttribute("aria-label", `Tampilkan slide ${i + 1}`);
-            dot.addEventListener("click", () => {
-                index = i;
-                render();
-                restart();
-            });
-            dotsWrap.appendChild(dot);
-        });
-
-        function render(){
-            const item = slides[index];
-
-            image.style.opacity = "0";
-            image.style.transform = "scale(1.025)";
-
-            setTimeout(() => {
-                image.src = item.image;
-                image.alt = item.title;
-                backdrop.style.backgroundImage = `url("${item.image}")`;
-
-                label.innerHTML = item.label;
-                title.textContent = item.title;
-                text.textContent = item.text;
-                current.textContent = String(index + 1).padStart(2, "0");
-                progress.style.width = `${((index + 1) / slides.length) * 100}%`;
-
-                [...dotsWrap.children].forEach((dot, dotIndex) => {
-                    dot.classList.toggle("active", dotIndex === index);
-                });
-
-                image.style.opacity = "1";
-                image.style.transform = "scale(1)";
-            }, 180);
-        }
-
-        function goNext(){
-            index = (index + 1) % slides.length;
-            render();
-        }
-
-        function goPrev(){
-            index = (index - 1 + slides.length) % slides.length;
-            render();
-        }
-
-        function restart(){
-            clearInterval(timer);
-            timer = setInterval(goNext, 6500);
-        }
-
-        next?.addEventListener("click", () => { goNext(); restart(); });
-        prev?.addEventListener("click", () => { goPrev(); restart(); });
-
-        render();
-        restart();
-    });
-
-    // 3. AMBIENCE GALLERY (SUASANA AMRTA)
-    document.addEventListener("DOMContentLoaded", () => {
-        const ambienceData = [
-            {
-                image: "interior10.jpg",
-                label: "THE INTERIOR",
-                title: "Ruang untuk Menikmati Momen",
-                desc: "Nikmati suasana nyaman dengan sentuhan elegan untuk setiap pertemuan."
-            },
-            {
-                image: "malam.jpeg",
-                label: "NIGHT AMBIENCE",
-                title: "Suasana Malam yang Hangat",
-                desc: "Pencahayaan syahdu dan hangat untuk menemani obrolan malam Anda."
-            },
-            {
-                image: "amrtabaru.png",
-                label: "MODERN SPACE",
-                title: "Desain Arsitektur Modern",
-                desc: "Perpaduan konsep estetis dan kenyamanan ruang untuk seluruh tamu."
-            }
-        ];
-
-        let index = 0;
-        const mainImg = document.getElementById("ambienceMainImage");
-        const labelEl = document.getElementById("ambienceGalleryLabel");
-        const titleEl = document.getElementById("ambienceGalleryTitle");
-        const descEl = document.getElementById("ambienceGalleryDescription");
-        const currentEl = document.getElementById("ambienceGalleryCurrent");
-        const progressEl = document.getElementById("ambienceGalleryProgress");
-        const prevBtn = document.getElementById("ambienceGalleryPrev");
-        const nextBtn = document.getElementById("ambienceGalleryNext");
-        const thumbs = document.querySelectorAll(".ambience-gallery-thumb");
-
-        if (!mainImg) return;
-
-        function updateGallery(newIndex) {
-            index = (newIndex + ambienceData.length) % ambienceData.length;
-            const item = ambienceData[index];
-
-            mainImg.src = item.image;
-            labelEl.textContent = item.label;
-            titleEl.textContent = item.title;
-            descEl.textContent = item.desc;
-            currentEl.textContent = String(index + 1).padStart(2, "0");
-            
-            if (progressEl) {
-                progressEl.style.width = `${((index + 1) / ambienceData.length) * 100}%`;
-            }
-
-            thumbs.forEach((thumb, i) => {
-                thumb.classList.toggle("active", i === index);
-            });
-        }
-
-        prevBtn?.addEventListener("click", () => updateGallery(index - 1));
-        nextBtn?.addEventListener("click", () => updateGallery(index + 1));
-
-        thumbs.forEach((thumb, i) => {
-            thumb.addEventListener("click", () => updateGallery(i));
+    // Tutup saat link menu diklik
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            menu.classList.remove("active");
+            toggleBtn.classList.remove("open");
         });
     });
-    </script>
+
+    // Tutup jika klik di luar area navbar
+    document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+            menu.classList.remove("active");
+            toggleBtn.classList.remove("open");
+        }
+    });
+});
 </body>
 </html>
