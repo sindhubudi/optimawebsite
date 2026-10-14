@@ -16,573 +16,576 @@
 
 
 <style>
-/* TASTE FOR EVERY MOMENT — dibuat mengikuti tampilan kartu Suasana AMRTA */
-.taste-like-ambience-section .ambience-carousel-track {
-    align-items: stretch;
-}
+    /* =========================================================
+       NAVBAR RESPONSIF & MOBILE MENU (DIPERBAIKI)
+    ========================================================= */
+    .main-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #050505;
+        border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+    .navbar-container {
+        width: min(1180px, 92%);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 0;
+        position: relative;
+    }
+    .navbar-logo img {
+        height: 40px;
+        display: block;
+    }
+    .navbar-menu {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+    }
+    .nav-link {
+        color: rgba(255,255,255,0.8);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+    }
+    .nav-link.active, .nav-link:hover {
+        color: #d4af37;
+    }
 
-.taste-like-ambience-section .ambience-card {
-    flex: 0 0 360px;
-    height: 620px;
-}
+    /* Ikon Hamburger */
+    .navbar-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 26px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+    .navbar-toggle span {
+        width: 100%;
+        height: 2px;
+        background: #d4af37;
+        transition: all 0.3s ease;
+    }
 
-.taste-like-ambience-section .ambience-card img {
-    object-fit: cover;
-    object-position: center;
-}
+    /* Efek Ikon Silang (X) saat Aktif */
+    .navbar-toggle.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .navbar-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .navbar-toggle.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 
-@media (max-width: 900px) {
+    @media (max-width: 850px) {
+        .navbar-toggle {
+            display: flex;
+        }
+        .navbar-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #0a0a0a; /* Latar belakang solid hitam gelap */
+            flex-direction: column;
+            padding: 10px 0;
+            gap: 0;
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.9);
+            
+            /* Animasi Slide-Down & Fade In */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease-in-out;
+            pointer-events: none;
+        }
+
+        .navbar-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .nav-link {
+            padding: 14px 24px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .nav-link:last-child {
+            border-bottom: none;
+        }
+    }
+
+    /* =========================================================
+       TASTE FOR EVERY MOMENT & CAROUSEL
+    ========================================================= */
+    .taste-like-ambience-section .ambience-carousel-track {
+        align-items: stretch;
+    }
     .taste-like-ambience-section .ambience-card {
-        flex-basis: 320px;
-        height: 560px;
+        flex: 0 0 360px;
+        height: 620px;
     }
-}
-
-@media (max-width: 600px) {
-    .taste-like-ambience-section .ambience-card {
-        flex-basis: 82vw;
-        height: 520px;
-    }
-}
-</style>
-
-<style>
-/* =========================================================
-   CINEMATIC TASTE CAROUSEL — AMRTA
-========================================================= */
-
-.taste-cinematic-section{
-    padding:110px 0;
-    background:#050505;
-    color:#fff;
-}
-
-.taste-cinematic-container{
-    width:min(1180px,92%);
-    margin:0 auto;
-}
-
-.taste-cinematic-heading{
-    text-align:center;
-    max-width:760px;
-    margin:0 auto 52px;
-}
-
-.taste-cinematic-heading .section-eyebrow{
-    margin-bottom:12px;
-}
-
-.taste-cinematic-heading h2{
-    margin:0 0 12px;
-    color:#fff;
-    font-size:clamp(32px,4vw,52px);
-    line-height:1.08;
-}
-
-.taste-cinematic-heading > p:last-child{
-    margin:0 auto;
-    max-width:650px;
-    color:rgba(255,255,255,.68);
-    line-height:1.8;
-}
-
-.taste-cinematic{
-    display:grid;
-    grid-template-columns:minmax(0,1.02fr) minmax(330px,.78fr);
-    min-height:610px;
-    overflow:hidden;
-    border:1px solid rgba(212,175,55,.22);
-    border-radius:18px;
-    background:#0a0a0a;
-    box-shadow:0 35px 90px rgba(0,0,0,.5);
-}
-
-.taste-cinematic-media{
-    position:relative;
-    min-height:610px;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#090909;
-}
-
-.taste-cinematic-backdrop{
-    position:absolute;
-    inset:-35px;
-    background-image:url("makanan.jpeg");
-    background-size:cover;
-    background-position:center;
-    filter:blur(28px);
-    transform:scale(1.12);
-    opacity:.25;
-}
-
-.taste-cinematic-frame{
-    position:relative;
-    z-index:2;
-    width:min(76%,500px);
-    aspect-ratio:4/5;
-    overflow:hidden;
-    border:1px solid rgba(212,175,55,.62);
-    border-radius:12px;
-    background:#111;
-    box-shadow:0 24px 55px rgba(0,0,0,.55);
-}
-
-.taste-cinematic-frame::after{
-    content:"";
-    position:absolute;
-    inset:10px;
-    border:1px solid rgba(212,175,55,.25);
-    border-radius:8px;
-    pointer-events:none;
-}
-
-.taste-cinematic-frame img{
-    width:100%;
-    height:100%;
-    display:block;
-    object-fit:cover;
-    object-position:center;
-    transition:opacity .45s ease, transform .65s ease;
-}
-
-.taste-cinematic-index{
-    position:absolute;
-    z-index:3;
-    left:28px;
-    top:28px;
-    color:#d4af37;
-    font-size:13px;
-    letter-spacing:3px;
-}
-
-.taste-cinematic-divider{
-    margin:0 8px;
-    color:rgba(255,255,255,.4);
-}
-
-.taste-cinematic-content{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:70px 62px;
-    background:
-        radial-gradient(circle at 100% 0%,rgba(212,175,55,.08),transparent 35%),
-        #0a0a0a;
-}
-
-.taste-cinematic-label{
-    display:inline-block;
-    color:#d4af37;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:3px;
-    margin-bottom:18px;
-}
-
-.taste-cinematic-content h3{
-    margin:0 0 20px;
-    color:#fff;
-    font-size:clamp(34px,4vw,56px);
-    line-height:1.02;
-    font-weight:600;
-}
-
-.taste-cinematic-content p{
-    margin:0;
-    max-width:470px;
-    color:rgba(255,255,255,.7);
-    font-size:16px;
-    line-height:1.8;
-}
-
-.taste-cinematic-progress{
-    width:100%;
-    height:2px;
-    margin:42px 0 25px;
-    background:rgba(255,255,255,.14);
-    overflow:hidden;
-}
-
-.taste-cinematic-progress span{
-    display:block;
-    width:20%;
-    height:100%;
-    background:#d4af37;
-    transition:width .45s ease;
-}
-
-.taste-cinematic-controls{
-    display:flex;
-    gap:10px;
-}
-
-.taste-cinematic-controls button{
-    width:46px;
-    height:46px;
-    border:1px solid rgba(212,175,55,.45);
-    border-radius:50%;
-    background:transparent;
-    color:#d4af37;
-    font-size:21px;
-    cursor:pointer;
-    transition:.25s ease;
-}
-
-.taste-cinematic-controls button:hover{
-    background:#d4af37;
-    color:#050505;
-}
-
-.taste-cinematic-dots{
-    display:flex;
-    gap:7px;
-    margin-top:20px;
-}
-
-.taste-cinematic-dots button{
-    width:25px;
-    height:3px;
-    padding:0;
-    border:0;
-    background:rgba(255,255,255,.2);
-    cursor:pointer;
-    transition:.3s ease;
-}
-
-.taste-cinematic-dots button.active{
-    width:44px;
-    background:#d4af37;
-}
-
-@media(max-width:900px){
-    .taste-cinematic{
-        grid-template-columns:1fr;
+    .taste-like-ambience-section .ambience-card img {
+        object-fit: cover;
+        object-position: center;
     }
 
-    .taste-cinematic-media{
-        min-height:570px;
+    @media (max-width: 900px) {
+        .taste-like-ambience-section .ambience-card {
+            flex-basis: 320px;
+            height: 560px;
+        }
+    }
+    @media (max-width: 600px) {
+        .taste-like-ambience-section .ambience-card {
+            flex-basis: 82vw;
+            height: 520px;
+        }
     }
 
-    .taste-cinematic-content{
-        padding:52px 42px 58px;
-    }
-}
-
-@media(max-width:600px){
     .taste-cinematic-section{
-        padding:78px 0;
+        padding:110px 0;
+        background:#050505;
+        color:#fff;
     }
-
+    .taste-cinematic-container{
+        width:min(1180px,92%);
+        margin:0 auto;
+    }
     .taste-cinematic-heading{
-        margin-bottom:34px;
+        text-align:center;
+        max-width:760px;
+        margin:0 auto 52px;
     }
-
+    .taste-cinematic-heading .section-eyebrow{
+        margin-bottom:12px;
+    }
+    .taste-cinematic-heading h2{
+        margin:0 0 12px;
+        color:#fff;
+        font-size:clamp(32px,4vw,52px);
+        line-height:1.08;
+    }
+    .taste-cinematic-heading > p:last-child{
+        margin:0 auto;
+        max-width:650px;
+        color:rgba(255,255,255,.68);
+        line-height:1.8;
+    }
+    .taste-cinematic{
+        display:grid;
+        grid-template-columns:minmax(0,1.02fr) minmax(330px,.78fr);
+        min-height:610px;
+        overflow:hidden;
+        border:1px solid rgba(212,175,55,.22);
+        border-radius:18px;
+        background:#0a0a0a;
+        box-shadow:0 35px 90px rgba(0,0,0,.5);
+    }
     .taste-cinematic-media{
-        min-height:470px;
+        position:relative;
+        min-height:610px;
+        overflow:hidden;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#090909;
     }
-
+    .taste-cinematic-backdrop{
+        position:absolute;
+        inset:-35px;
+        background-image:url("makanan.jpeg");
+        background-size:cover;
+        background-position:center;
+        filter:blur(28px);
+        transform:scale(1.12);
+        opacity:.25;
+    }
     .taste-cinematic-frame{
-        width:min(74%,330px);
+        position:relative;
+        z-index:2;
+        width:min(76%,500px);
+        aspect-ratio:4/5;
+        overflow:hidden;
+        border:1px solid rgba(212,175,55,.62);
+        border-radius:12px;
+        background:#111;
+        box-shadow:0 24px 55px rgba(0,0,0,.55);
     }
-
+    .taste-cinematic-frame::after{
+        content:"";
+        position:absolute;
+        inset:10px;
+        border:1px solid rgba(212,175,55,.25);
+        border-radius:8px;
+        pointer-events:none;
+    }
+    .taste-cinematic-frame img{
+        width:100%;
+        height:100%;
+        display:block;
+        object-fit:cover;
+        object-position:center;
+        transition:opacity .45s ease, transform .65s ease;
+    }
     .taste-cinematic-index{
-        left:18px;
-        top:18px;
+        position:absolute;
+        z-index:3;
+        left:28px;
+        top:28px;
+        color:#d4af37;
+        font-size:13px;
+        letter-spacing:3px;
     }
-
+    .taste-cinematic-divider{
+        margin:0 8px;
+        color:rgba(255,255,255,.4);
+    }
     .taste-cinematic-content{
-        padding:42px 24px 48px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        padding:70px 62px;
+        background:
+            radial-gradient(circle at 100% 0%,rgba(212,175,55,.08),transparent 35%),
+            #0a0a0a;
     }
-
+    .taste-cinematic-label{
+        display:inline-block;
+        color:#d4af37;
+        font-size:11px;
+        font-weight:700;
+        letter-spacing:3px;
+        margin-bottom:18px;
+    }
     .taste-cinematic-content h3{
-        font-size:38px;
+        margin:0 0 20px;
+        color:#fff;
+        font-size:clamp(34px,4vw,56px);
+        line-height:1.02;
+        font-weight:600;
     }
-}
-</style>
+    .taste-cinematic-content p{
+        margin:0;
+        max-width:470px;
+        color:rgba(255,255,255,.7);
+        font-size:16px;
+        line-height:1.8;
+    }
+    .taste-cinematic-progress{
+        width:100%;
+        height:2px;
+        margin:42px 0 25px;
+        background:rgba(255,255,255,.14);
+        overflow:hidden;
+    }
+    .taste-cinematic-progress span{
+        display:block;
+        width:20%;
+        height:100%;
+        background:#d4af37;
+        transition:width .45s ease;
+    }
+    .taste-cinematic-controls{
+        display:flex;
+        gap:10px;
+    }
+    .taste-cinematic-controls button{
+        width:46px;
+        height:46px;
+        border:1px solid rgba(212,175,55,.45);
+        border-radius:50%;
+        background:transparent;
+        color:#d4af37;
+        font-size:21px;
+        cursor:pointer;
+        transition:.25s ease;
+    }
+    .taste-cinematic-controls button:hover{
+        background:#d4af37;
+        color:#050505;
+    }
+    .taste-cinematic-dots{
+        display:flex;
+        gap:7px;
+        margin-top:20px;
+    }
+    .taste-cinematic-dots button{
+        width:25px;
+        height:3px;
+        padding:0;
+        border:0;
+        background:rgba(255,255,255,.2);
+        cursor:pointer;
+        transition:.3s ease;
+    }
+    .taste-cinematic-dots button.active{
+        width:44px;
+        background:#d4af37;
+    }
 
+    @media(max-width:900px){
+        .taste-cinematic{
+            grid-template-columns:1fr;
+        }
+        .taste-cinematic-media{
+            min-height:420px;
+        }
+        .taste-cinematic-content{
+            padding:42px 28px;
+        }
+    }
 
-<style>
-/* =========================================================
-   AMRTA EXPERIENCE — REFINED MINIMAL LUXURY
-========================================================= */
-.amrta-experience-section{
-    position:relative;
-    padding:68px 0 48px;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 12% 12%,rgba(212,175,55,.035),transparent 28%),
-        radial-gradient(circle at 88% 88%,rgba(212,175,55,.025),transparent 30%),
-        #050505;
-    color:#fff;
-    scroll-margin-top:110px;
-}
+    @media(max-width:600px){
+        .taste-cinematic-section{
+            padding:60px 0;
+        }
+        .taste-cinematic-heading{
+            margin-bottom:34px;
+        }
+        .taste-cinematic-media{
+            min-height:360px;
+        }
+        .taste-cinematic-frame{
+            width:min(80%,300px);
+        }
+        .taste-cinematic-index{
+            left:18px;
+            top:18px;
+        }
+        .taste-cinematic-content h3{
+            font-size:30px;
+        }
+    }
 
-.amrta-experience-container{width:min(1160px,92%);margin:0 auto}
+    /* =========================================================
+       AMRTA EXPERIENCE & FOOTER
+    ========================================================= */
+    .amrta-experience-section{
+        position:relative;
+        padding:68px 0 48px;
+        overflow:hidden;
+        background:
+            radial-gradient(circle at 12% 12%,rgba(212,175,55,.035),transparent 28%),
+            radial-gradient(circle at 88% 88%,rgba(212,175,55,.025),transparent 30%),
+            #050505;
+        color:#fff;
+        scroll-margin-top:110px;
+    }
+    .amrta-experience-container{width:min(1160px,92%);margin:0 auto}
+    .amrta-experience-heading{
+        max-width:720px;
+        margin:0 auto 25px;
+        text-align:center;
+    }
+    .amrta-experience-eyebrow{
+        display:block;
+        margin-bottom:11px;
+        color:#d4af37;
+        font-size:8px;
+        font-weight:700;
+        letter-spacing:4px;
+    }
+    .amrta-experience-heading h2{
+        margin:0 0 11px;
+        color:#fff;
+        font-size:clamp(32px,3.5vw,44px);
+        line-height:1.03;
+        font-weight:300;
+        letter-spacing:-1px;
+    }
+    .amrta-experience-heading h2 span{color:#d4af37;font-weight:400}
+    .amrta-experience-heading p{
+        margin:0;
+        color:rgba(255,255,255,.44);
+        font-size:11.5px;
+        line-height:1.6;
+    }
+    .amrta-experience-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        border-top:1px solid rgba(212,175,55,.24);
+        border-bottom:1px solid rgba(212,175,55,.24);
+    }
+    .amrta-experience-card{
+        position:relative;
+        min-height:420px;
+        padding:25px 40px 29px;
+        overflow:hidden;
+    }
+    .amrta-menu-card{
+        background:linear-gradient(135deg,rgba(212,175,55,.03),transparent 42%),#090909;
+        border-right:1px solid rgba(212,175,55,.16);
+    }
+    .amrta-visit-card{background:#070707}
+    .amrta-card-top{
+        position:relative;
+        z-index:2;
+        display:flex;
+        align-items:center;
+        gap:9px;
+        padding-bottom:14px;
+        border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .amrta-card-number{color:#d4af37;font-size:9px;font-weight:700;letter-spacing:2px}
+    .amrta-card-slash{color:rgba(212,175,55,.38);font-size:9px}
+    .amrta-card-label{color:rgba(255,255,255,.32);font-size:7px;font-weight:700;letter-spacing:2.7px}
+    .amrta-card-content{position:relative;z-index:2;padding-top:29px}
+    .amrta-card-line{
+        display:block;
+        width:38px;
+        height:2px;
+        margin-bottom:15px;
+        background:#d4af37;
+    }
+    .amrta-card-content h3{
+        margin:0 0 12px;
+        color:#fff;
+        font-size:clamp(32px,3.4vw,46px);
+        line-height:.98;
+        font-weight:300;
+        letter-spacing:-1.2px;
+    }
+    .amrta-card-content h3 strong{color:#d4af37;font-weight:400}
+    .amrta-card-lead{
+        max-width:450px;
+        margin:0 0 10px;
+        color:#fff;
+        font-size:13px;
+        line-height:1.55;
+    }
+    .amrta-card-description{
+        max-width:470px;
+        margin:0;
+        color:rgba(255,255,255,.47);
+        font-size:11px;
+        line-height:1.75;
+    }
+    .amrta-menu-tags{
+        display:flex;
+        flex-wrap:wrap;
+        gap:7px 16px;
+        margin-top:18px;
+        padding-top:13px;
+        border-top:1px solid rgba(255,255,255,.06);
+    }
+    .amrta-menu-tags span{
+        color:rgba(255,255,255,.35);
+        font-size:7px;
+        font-weight:700;
+        letter-spacing:1.8px;
+    }
+    .amrta-visit-details{max-width:500px;margin-top:16px}
+    .amrta-visit-detail{
+        padding:8px 0;
+        border-top:1px solid rgba(255,255,255,.055);
+    }
+    .amrta-detail-label{
+        display:block;
+        margin-bottom:4px;
+        color:#d4af37;
+        font-size:7px;
+        font-weight:700;
+        letter-spacing:2.3px;
+    }
+    .amrta-visit-detail p{
+        margin:0;
+        color:rgba(255,255,255,.5);
+        font-size:10.5px;
+        line-height:1.6;
+    }
+    .amrta-card-actions{
+        display:flex;
+        align-items:center;
+        flex-wrap:wrap;
+        gap:18px;
+        margin-top:20px;
+    }
+    .amrta-experience-btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:25px;
+        min-width:138px;
+        padding:10px 15px;
+        background:#d4af37;
+        border:1px solid #d4af37;
+        color:#050505;
+        text-decoration:none;
+        font-size:8px;
+        font-weight:700;
+        letter-spacing:1.6px;
+        transition:.25s ease;
+    }
+    .amrta-experience-btn b{font-size:13px;font-weight:400}
+    .amrta-experience-btn:hover{background:#e4c35a;border-color:#e4c35a;transform:translateY(-2px)}
 
-.amrta-experience-heading{
-    max-width:720px;
-    margin:0 auto 25px;
-    text-align:center;
-}
+    .amrta-experience-link{
+        color:#d4af37;
+        text-decoration:none;
+        font-size:8px;
+        font-weight:700;
+        letter-spacing:1.4px;
+        transition:.25s ease;
+    }
+    .amrta-experience-link span{margin-left:4px;font-size:12px}
+    .amrta-experience-link:hover{color:#fff}
 
-.amrta-experience-eyebrow{
-    display:block;
-    margin-bottom:11px;
-    color:#d4af37;
-    font-size:8px;
-    font-weight:700;
-    letter-spacing:4px;
-}
+    .amrta-experience-footer{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:12px;
+        margin-top:18px;
+        color:rgba(255,255,255,.2);
+        font-size:6px;
+        font-weight:700;
+        letter-spacing:2.7px;
+    }
+    .amrta-experience-footer i{display:block;width:22px;height:1px;background:rgba(212,175,55,.32)}
 
-.amrta-experience-heading h2{
-    margin:0 0 11px;
-    color:#fff;
-    font-size:clamp(32px,3.5vw,44px);
-    line-height:1.03;
-    font-weight:300;
-    letter-spacing:-1px;
-}
+    @media(max-width:850px){
+        .amrta-experience-grid{grid-template-columns:1fr}
+        .amrta-menu-card{border-right:0;border-bottom:1px solid rgba(212,175,55,.16)}
+        .amrta-experience-card{min-height:auto}
+    }
+    @media(max-width:600px){
+        .amrta-experience-section{padding:58px 0 48px}
+        .amrta-experience-heading{margin-bottom:24px}
+        .amrta-experience-heading h2{font-size:28px;line-height:1.06}
+        .amrta-experience-card{padding:23px 20px 28px}
+        .amrta-card-content{padding-top:28px}
+        .amrta-card-content h3{font-size:30px}
+        .amrta-card-actions{align-items:flex-start;flex-direction:column;gap:15px}
+        .amrta-experience-btn{width:100%}
+        .amrta-experience-footer{flex-direction:column;gap:7px;text-align:center}
+    }
 
-.amrta-experience-heading h2 span{color:#d4af37;font-weight:400}
-
-.amrta-experience-heading p{
-    margin:0;
-    color:rgba(255,255,255,.44);
-    font-size:11.5px;
-    line-height:1.6;
-}
-
-.amrta-experience-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    border-top:1px solid rgba(212,175,55,.24);
-    border-bottom:1px solid rgba(212,175,55,.24);
-}
-
-.amrta-experience-card{
-    position:relative;
-    min-height:420px;
-    padding:25px 40px 29px;
-    overflow:hidden;
-}
-
-.amrta-menu-card{
-    background:linear-gradient(135deg,rgba(212,175,55,.03),transparent 42%),#090909;
-    border-right:1px solid rgba(212,175,55,.16);
-}
-
-.amrta-visit-card{background:#070707}
-
-.amrta-experience-card::after{
-    content:"";
-    position:absolute;
-    right:-105px;
-    bottom:-125px;
-    width:270px;
-    height:270px;
-    border:1px solid rgba(212,175,55,.045);
-    border-radius:50%;
-    pointer-events:none;
-}
-
-.amrta-card-top{
-    position:relative;
-    z-index:2;
-    display:flex;
-    align-items:center;
-    gap:9px;
-    padding-bottom:14px;
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.amrta-card-number{color:#d4af37;font-size:9px;font-weight:700;letter-spacing:2px}
-.amrta-card-slash{color:rgba(212,175,55,.38);font-size:9px}
-.amrta-card-label{color:rgba(255,255,255,.32);font-size:7px;font-weight:700;letter-spacing:2.7px}
-
-.amrta-card-content{position:relative;z-index:2;padding-top:29px}
-
-.amrta-card-line{
-    display:block;
-    width:38px;
-    height:2px;
-    margin-bottom:15px;
-    background:#d4af37;
-}
-
-.amrta-card-content h3{
-    margin:0 0 12px;
-    color:#fff;
-    font-size:clamp(37px,3.4vw,46px);
-    line-height:.98;
-    font-weight:300;
-    letter-spacing:-1.2px;
-}
-
-.amrta-card-content h3 strong{color:#d4af37;font-weight:400}
-
-.amrta-card-lead{
-    max-width:450px;
-    margin:0 0 10px;
-    color:#fff;
-    font-size:13px;
-    line-height:1.55;
-}
-
-.amrta-card-description{
-    max-width:470px;
-    margin:0;
-    color:rgba(255,255,255,.47);
-    font-size:11px;
-    line-height:1.75;
-}
-
-.amrta-menu-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px 16px;
-    margin-top:18px;
-    padding-top:13px;
-    border-top:1px solid rgba(255,255,255,.06);
-}
-
-.amrta-menu-tags span{
-    color:rgba(255,255,255,.35);
-    font-size:7px;
-    font-weight:700;
-    letter-spacing:1.8px;
-}
-
-.amrta-visit-details{max-width:500px;margin-top:16px}
-
-.amrta-visit-detail{
-    padding:8px 0;
-    border-top:1px solid rgba(255,255,255,.055);
-}
-
-.amrta-detail-label{
-    display:block;
-    margin-bottom:4px;
-    color:#d4af37;
-    font-size:7px;
-    font-weight:700;
-    letter-spacing:2.3px;
-}
-
-.amrta-visit-detail p{
-    margin:0;
-    color:rgba(255,255,255,.5);
-    font-size:10.5px;
-    line-height:1.6;
-}
-
-.amrta-card-actions{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:18px;
-    margin-top:20px;
-}
-
-.amrta-experience-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:25px;
-    min-width:138px;
-    padding:10px 15px;
-    background:#d4af37;
-    border:1px solid #d4af37;
-    color:#050505;
-    text-decoration:none;
-    font-size:8px;
-    font-weight:700;
-    letter-spacing:1.6px;
-    transition:.25s ease;
-}
-
-.amrta-experience-btn b{font-size:13px;font-weight:400}
-.amrta-experience-btn:hover{background:#e4c35a;border-color:#e4c35a;transform:translateY(-2px)}
-
-.amrta-experience-link{
-    color:#d4af37;
-    text-decoration:none;
-    font-size:8px;
-    font-weight:700;
-    letter-spacing:1.4px;
-    transition:.25s ease;
-}
-
-.amrta-experience-link span{margin-left:4px;font-size:12px}
-.amrta-experience-link:hover{color:#fff}
-
-.amrta-experience-footer{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-    margin-top:18px;
-    color:rgba(255,255,255,.2);
-    font-size:6px;
-    font-weight:700;
-    letter-spacing:2.7px;
-}
-
-.amrta-experience-footer i{display:block;width:22px;height:1px;background:rgba(212,175,55,.32)}
-
-@media(max-width:850px){
-    .amrta-experience-grid{grid-template-columns:1fr}
-    .amrta-menu-card{border-right:0;border-bottom:1px solid rgba(212,175,55,.16)}
-    .amrta-experience-card{min-height:auto}
-}
-
-@media(max-width:600px){
-    .amrta-experience-section{padding:58px 0 48px}
-    .amrta-experience-heading{margin-bottom:24px}
-    .amrta-experience-heading h2{font-size:30px;line-height:1.06}
-    .amrta-experience-card{padding:23px 20px 28px}
-    .amrta-card-content{padding-top:28px}
-    .amrta-card-content h3{font-size:37px}
-    .amrta-card-actions{align-items:flex-start;flex-direction:column;gap:15px}
-    .amrta-experience-btn{width:100%}
-    .amrta-experience-footer{flex-direction:column;gap:7px;text-align:center}
-}
-</style>
-
-
-<!-- V4 FONT POLISH ONLY — layout preserved -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-/* Font-only polish: scoped to Discover AMRTA, preserving V3 layout */
-.amrta-experience-section{font-family:'DM Sans',Arial,sans-serif;}
-.amrta-experience-heading h2,
-.amrta-experience-heading h2 span,
-.amrta-card-content h3,
-.amrta-card-content h3 strong{
-  font-family:'Playfair Display',Georgia,serif;
-}
-.amrta-experience-heading h2{font-weight:400;letter-spacing:-0.7px;}
-.amrta-experience-heading h2 span{font-weight:500;}
-.amrta-card-content h3{font-weight:400;letter-spacing:-0.5px;}
-.amrta-card-content h3 strong{font-weight:500;}
-.amrta-experience-heading p,
-.amrta-card-lead,
-.amrta-card-description,
-.amrta-visit-detail p{font-family:'DM Sans',Arial,sans-serif;}
-.amrta-card-lead{font-weight:500;}
-.amrta-card-label,
-.amrta-card-number,
-.amrta-card-slash,
-.amrta-detail-label,
-.amrta-menu-tags span,
-.amrta-experience-btn,
-.amrta-experience-link,
-.amrta-experience-footer{font-family:'DM Sans',Arial,sans-serif;}
-</style>
+    /* Font Styles */
+    .amrta-experience-section{font-family:'DM Sans',Arial,sans-serif;}
+    .amrta-experience-heading h2,
+    .amrta-experience-heading h2 span,
+    .amrta-card-content h3,
+    .amrta-card-content h3 strong{
+      font-family:'Playfair Display',Georgia,serif;
+    }
+    </style>
 </head>
 
 <body>
@@ -744,7 +747,7 @@
                     <div class="about-home-image">
                         <div class="about-home-image-frame">
                             <img
-                                src="gambaramrta05.jpeg"
+                                src="gambarpohonamrta.png"
                                 alt="AMRTA Kitchen & Coffee Bar"
                             >
                         </div>
@@ -1199,295 +1202,213 @@
     </div>
 
 </footer>
+<!-- =========================
+        JAVASCRIPT PERBAIKAN
+    ========================== -->
+    <script>
+    // 1. TOGGLE NAVBAR MOBILE (DIPERBAIKI)
+    function toggleNavbar() {
+        const menu = document.getElementById("navbarMenu");
+        const toggleBtn = document.getElementById("navbarToggle");
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const slides = [
-        {
-            image: "fullmakanan.jpeg",
-            label: "FOOD & FLAVOR",
-            title: "Flavors Worth Sharing",
-            text: "Sajian AMRTA hadir dengan cita rasa yang dibuat untuk dinikmati bersama."
-        },
-        {
-            image: "kitchenamrta.jpeg",
-            label: "FROM OUR KITCHEN",
-            title: "Crafted with Passion",
-            text: "Setiap hidangan dipersiapkan dengan perhatian pada rasa, detail, dan kualitas."
-        },
-        {
-            image: "gambarkopi03.jpeg",
-            label: "COFFEE BAR",
-            title: "Brewed for Every Moment",
-            text: "Temukan pilihan kopi dan minuman yang pas untuk memulai, menemani, atau menutup hari."
-        },
-        {
-            image: "lapis3.jpeg",
-            label: "PASTRY & BAKERY",
-            title: "Freshly Made, Beautifully Served",
-            text: "Pastry dan bakery AMRTA melengkapi momen santai dengan rasa yang hangat dan menyenangkan."
-        },
-        {
-            image: "gambar suasana.jpeg",
-            label: "THE AMRTA EXPERIENCE",
-            title: "Moments Made at AMRTA",
-            text: "Bukan hanya tentang rasa, tetapi tentang momen yang ingin Anda nikmati kembali."
-        }
-    ];
+        menu.classList.toggle("active");
+        toggleBtn.classList.toggle("open");
+    }
 
-    const image = document.getElementById("tasteCinematicImage");
-    const backdrop = document.querySelector(".taste-cinematic-backdrop");
-    const current = document.getElementById("tasteCinematicCurrent");
-    const label = document.getElementById("tasteCinematicLabel");
-    const title = document.getElementById("tasteCinematicTitle");
-    const text = document.getElementById("tasteCinematicText");
-    const progress = document.getElementById("tasteCinematicProgress");
-    const dotsWrap = document.getElementById("tasteCinematicDots");
-    const prev = document.getElementById("tasteCinematicPrev");
-    const next = document.getElementById("tasteCinematicNext");
+    document.addEventListener("DOMContentLoaded", () => {
+        const menu = document.getElementById("navbarMenu");
+        const toggleBtn = document.getElementById("navbarToggle");
 
-    if (!image || !backdrop || !current || !label || !title || !text || !progress || !dotsWrap) return;
-
-    let index = 0;
-    let timer;
-
-    slides.forEach((_, i) => {
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.setAttribute("aria-label", `Tampilkan slide ${i + 1}`);
-        dot.addEventListener("click", () => {
-            index = i;
-            render();
-            restart();
-        });
-        dotsWrap.appendChild(dot);
-    });
-
-    function render(){
-        const item = slides[index];
-
-        image.style.opacity = "0";
-        image.style.transform = "scale(1.025)";
-
-        setTimeout(() => {
-            image.src = item.image;
-            image.alt = item.title;
-            backdrop.style.backgroundImage = `url("${item.image}")`;
-
-            label.innerHTML = item.label;
-            title.textContent = item.title;
-            text.textContent = item.text;
-            current.textContent = String(index + 1).padStart(2, "0");
-            progress.style.width = `${((index + 1) / slides.length) * 100}%`;
-
-            [...dotsWrap.children].forEach((dot, dotIndex) => {
-                dot.classList.toggle("active", dotIndex === index);
+        // Otomatis tutup menu jika salah satu link navigasi diklik
+        document.querySelectorAll(".nav-link").forEach(link => {
+            link.addEventListener("click", () => {
+                menu.classList.remove("active");
+                toggleBtn.classList.remove("open");
             });
-
-            image.style.opacity = "1";
-            image.style.transform = "scale(1)";
-        }, 180);
-    }
-
-    function goNext(){
-        index = (index + 1) % slides.length;
-        render();
-    }
-
-    function goPrev(){
-        index = (index - 1 + slides.length) % slides.length;
-        render();
-    }
-
-    function restart(){
-        clearInterval(timer);
-        timer = setInterval(goNext, 6500);
-    }
-
-    next?.addEventListener("click", () => {
-        goNext();
-        restart();
-    });
-
-    prev?.addEventListener("click", () => {
-        goPrev();
-        restart();
-    });
-
-    let startX = 0;
-    const carousel = document.querySelector(".taste-cinematic");
-
-    carousel?.addEventListener("touchstart", e => {
-        startX = e.touches[0].clientX;
-    }, {passive:true});
-
-    carousel?.addEventListener("touchend", e => {
-        const endX = e.changedTouches[0].clientX;
-        const distance = endX - startX;
-
-        if (Math.abs(distance) > 50) {
-            distance < 0 ? goNext() : goPrev();
-            restart();
-        }
-    }, {passive:true});
-
-    render();
-    restart();
-});
-
-/* =====================================================
-   AMRTA EDITORIAL AMBIENCE CAROUSEL
-===================================================== */
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.getElementById("ambienceEditorial");
-    if (!root) return;
-
-    const slides = [...root.querySelectorAll(".ambience-editorial-slide")];
-    const current = root.querySelector("#ambienceCurrent");
-    const label = root.querySelector("#ambienceLabel");
-    const title = root.querySelector("#ambienceTitle");
-    const description = root.querySelector("#ambienceDescription");
-    const progress = root.querySelector("#ambienceProgress");
-    const progressTrack = root.querySelector("#ambienceProgressTrack");
-    const dotsWrap = root.querySelector("#ambienceDots");
-    const prev = root.querySelector("#ambiencePrev");
-    const next = root.querySelector("#ambienceNext");
-
-    if (!slides.length || !dotsWrap) return;
-
-    let index = 0;
-    let timer = null;
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-    const interval = 6500;
-    const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    const dots = slides.map((slide, i) => {
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.setAttribute("aria-label", `Lihat suasana ${i + 1}`);
-
-        dot.addEventListener("click", () => {
-            showSlide(i);
-            restartTimer();
         });
 
-        dotsWrap.appendChild(dot);
-        return dot;
+        // Otomatis tutup menu jika pengguna mengklik area di luar navbar
+        document.addEventListener("click", (e) => {
+            if (menu && toggleBtn && !menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                menu.classList.remove("active");
+                toggleBtn.classList.remove("open");
+            }
+        });
     });
 
-    function showSlide(newIndex) {
-        index = (newIndex + slides.length) % slides.length;
+    // 2. CAROUSEL TASTE CINEMATIC
+    document.addEventListener("DOMContentLoaded", () => {
+        const slides = [
+            {
+                image: "fullmakanan.jpeg",
+                label: "FOOD & FLAVOR",
+                title: "Flavors Worth Sharing",
+                text: "Sajian AMRTA hadir dengan cita rasa yang dibuat untuk dinikmati bersama."
+            },
+            {
+                image: "kitchenamrta.jpeg",
+                label: "FROM OUR KITCHEN",
+                title: "Crafted with Passion",
+                text: "Setiap hidangan dipersiapkan dengan perhatian pada rasa, detail, dan kualitas."
+            },
+            {
+                image: "gambarkopi03.jpeg",
+                label: "COFFEE BAR",
+                title: "Brewed for Every Moment",
+                text: "Temukan pilihan kopi dan minuman yang pas untuk memulai, menemani, atau menutup hari."
+            },
+            {
+                image: "lapis3.jpeg",
+                label: "PASTRY & BAKERY",
+                title: "Freshly Made, Beautifully Served",
+                text: "Pastry dan bakery AMRTA melengkapi momen santai dengan rasa yang hangat dan menyenangkan."
+            },
+            {
+                image: "gambar suasana.jpeg",
+                label: "THE AMRTA EXPERIENCE",
+                title: "Moments Made at AMRTA",
+                text: "Bukan hanya tentang rasa, tetapi tentang momen yang ingin Anda nikmati kembali."
+            }
+        ];
 
-        slides.forEach((slide, i) => {
-            const isActive = i === index;
-            slide.classList.toggle("active", isActive);
-            slide.setAttribute("aria-hidden", String(!isActive));
+        const image = document.getElementById("tasteCinematicImage");
+        const backdrop = document.querySelector(".taste-cinematic-backdrop");
+        const current = document.getElementById("tasteCinematicCurrent");
+        const label = document.getElementById("tasteCinematicLabel");
+        const title = document.getElementById("tasteCinematicTitle");
+        const text = document.getElementById("tasteCinematicText");
+        const progress = document.getElementById("tasteCinematicProgress");
+        const dotsWrap = document.getElementById("tasteCinematicDots");
+        const prev = document.getElementById("tasteCinematicPrev");
+        const next = document.getElementById("tasteCinematicNext");
+
+        if (!image || !backdrop || !dotsWrap) return;
+
+        let index = 0;
+        let timer;
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.setAttribute("aria-label", `Tampilkan slide ${i + 1}`);
+            dot.addEventListener("click", () => {
+                index = i;
+                render();
+                restart();
+            });
+            dotsWrap.appendChild(dot);
         });
 
-        const activeSlide = slides[index];
+        function render(){
+            const item = slides[index];
 
-        if (current) {
-            current.textContent = String(index + 1).padStart(2, "0");
+            image.style.opacity = "0";
+            image.style.transform = "scale(1.025)";
+
+            setTimeout(() => {
+                image.src = item.image;
+                image.alt = item.title;
+                backdrop.style.backgroundImage = `url("${item.image}")`;
+
+                label.innerHTML = item.label;
+                title.textContent = item.title;
+                text.textContent = item.text;
+                current.textContent = String(index + 1).padStart(2, "0");
+                progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+
+                [...dotsWrap.children].forEach((dot, dotIndex) => {
+                    dot.classList.toggle("active", dotIndex === index);
+                });
+
+                image.style.opacity = "1";
+                image.style.transform = "scale(1)";
+            }, 180);
         }
 
-        if (label) {
-            label.textContent = activeSlide.dataset.label || "";
+        function goNext(){
+            index = (index + 1) % slides.length;
+            render();
         }
 
-        if (title) {
-            title.textContent = activeSlide.dataset.title || "";
+        function goPrev(){
+            index = (index - 1 + slides.length) % slides.length;
+            render();
         }
 
-        if (description) {
-            description.textContent =
-                activeSlide.dataset.description || "";
-        }
-
-        if (progress) {
-            progress.style.width =
-                `${((index + 1) / slides.length) * 100}%`;
-        }
-
-        if (progressTrack) {
-            progressTrack.setAttribute("aria-valuenow", index + 1);
-            progressTrack.setAttribute("aria-valuemax", slides.length);
-        }
-
-        dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === index);
-            dot.setAttribute("aria-current", String(i === index));
-        });
-    }
-
-    function goNext() {
-        showSlide(index + 1);
-    }
-
-    function goPrev() {
-        showSlide(index - 1);
-    }
-
-    function stopTimer() {
-        if (timer) {
+        function restart(){
             clearInterval(timer);
-            timer = null;
+            timer = setInterval(goNext, 6500);
         }
-    }
 
-    function startTimer() {
-        stopTimer();
+        next?.addEventListener("click", () => { goNext(); restart(); });
+        prev?.addEventListener("click", () => { goPrev(); restart(); });
 
-        if (!reduceMotion && !document.hidden) {
-            timer = setInterval(goNext, interval);
-        }
-    }
-
-    function restartTimer() {
-        startTimer();
-    }
-
-    next?.addEventListener("click", () => {
-        goNext();
-        restartTimer();
+        render();
+        restart();
     });
 
-    prev?.addEventListener("click", () => {
-        goPrev();
-        restartTimer();
-    });
+    // 3. AMBIENCE GALLERY (SUASANA AMRTA)
+    document.addEventListener("DOMContentLoaded", () => {
+        const ambienceData = [
+            {
+                image: "interior10.jpg",
+                label: "THE INTERIOR",
+                title: "Ruang untuk Menikmati Momen",
+                desc: "Nikmati suasana nyaman dengan sentuhan elegan untuk setiap pertemuan."
+            },
+            {
+                image: "malam.jpeg",
+                label: "NIGHT AMBIENCE",
+                title: "Suasana Malam yang Hangat",
+                desc: "Pencahayaan syahdu dan hangat untuk menemani obrolan malam Anda."
+            },
+            {
+                image: "amrtabaru.png",
+                label: "MODERN SPACE",
+                title: "Desain Arsitektur Modern",
+                desc: "Perpaduan konsep estetis dan kenyamanan ruang untuk seluruh tamu."
+            }
+        ];
 
-    root.addEventListener("mouseenter", stopTimer);
-    root.addEventListener("mouseleave", startTimer);
-    root.addEventListener("focusin", stopTimer);
-    root.addEventListener("focusout", startTimer);
+        let index = 0;
+        const mainImg = document.getElementById("ambienceMainImage");
+        const labelEl = document.getElementById("ambienceGalleryLabel");
+        const titleEl = document.getElementById("ambienceGalleryTitle");
+        const descEl = document.getElementById("ambienceGalleryDescription");
+        const currentEl = document.getElementById("ambienceGalleryCurrent");
+        const progressEl = document.getElementById("ambienceGalleryProgress");
+        const prevBtn = document.getElementById("ambienceGalleryPrev");
+        const nextBtn = document.getElementById("ambienceGalleryNext");
+        const thumbs = document.querySelectorAll(".ambience-gallery-thumb");
 
-    document.addEventListener("visibilitychange", () => {
-        document.hidden ? stopTimer() : startTimer();
-    });
+        if (!mainImg) return;
 
-    root.addEventListener("touchstart", event => {
-        touchStartX = event.changedTouches[0].clientX;
-        touchStartY = event.changedTouches[0].clientY;
-    }, { passive: true });
+        function updateGallery(newIndex) {
+            index = (newIndex + ambienceData.length) % ambienceData.length;
+            const item = ambienceData[index];
 
-    root.addEventListener("touchend", event => {
-        const dx = event.changedTouches[0].clientX - touchStartX;
-        const dy = event.changedTouches[0].clientY - touchStartY;
+            mainImg.src = item.image;
+            labelEl.textContent = item.label;
+            titleEl.textContent = item.title;
+            descEl.textContent = item.desc;
+            currentEl.textContent = String(index + 1).padStart(2, "0");
+            
+            if (progressEl) {
+                progressEl.style.width = `${((index + 1) / ambienceData.length) * 100}%`;
+            }
 
-        // Swipe horizontal only, without disrupting vertical scrolling.
-        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
-            dx < 0 ? goNext() : goPrev();
-            restartTimer();
+            thumbs.forEach((thumb, i) => {
+                thumb.classList.toggle("active", i === index);
+            });
         }
-    }, { passive: true });
 
-    showSlide(0);
-    startTimer();
-});
-</script>
+        prevBtn?.addEventListener("click", () => updateGallery(index - 1));
+        nextBtn?.addEventListener("click", () => updateGallery(index + 1));
 
-
+        thumbs.forEach((thumb, i) => {
+            thumb.addEventListener("click", () => updateGallery(i));
+        });
+    });
+    </script>
+</body>
+</html>
